@@ -19,7 +19,7 @@ const webpSrcset = webp.map(({ srcset }) => srcset).join(",");
 const pngSrcset = png.map(({ srcset }) => srcset).join(",");
 ---
 
-<section class="relative h-full bg-black">
+<section class="relative h-full bg-white dark:bg-black ">
   <Starfield />
   <div id="splash-bg-fallback" class="absolute inset-0 hidden opacity-40">
     <HeroImage />
@@ -41,7 +41,7 @@ const pngSrcset = png.map(({ srcset }) => srcset).join(",");
     <div class="self-start w-2/3 max-w-3xl sm:w-10/12 sm:self-auto sm:justify-self-start">
     <img class="object-cover w-full h-full" src="/assets/images/panda.gif" alt="">
     </div>
-    <picture
+    <!-- <picture
       class="self-start w-2/3 max-w-3xl sm:w-10/12 sm:self-auto sm:justify-self-start"
     >
       <source type="image/avif" srcset={avifSrcset} {sizes} />
@@ -54,7 +54,7 @@ const pngSrcset = png.map(({ srcset }) => srcset).join(",");
         height={png[0].height}
         alt="A floating astronaut in a space suit"
       />
-    </picture>
+    </picture> -->
   </div>
 </section>
 

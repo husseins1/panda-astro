@@ -42,11 +42,23 @@
     }
 
     draw(ctx: CanvasRenderingContext2D) {
+
+      if(document.documentElement.classList.contains("light")){
+      ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
+      ctx.strokeStyle = "black";
+      
+    }
+    if(document.documentElement.classList.contains("dark")){
+      ctx.fillStyle = "rgba(0, 0, 0, 0.4)";
+      ctx.strokeStyle = "white";
+      
+    }
       ctx.lineWidth = this.z;
       ctx.beginPath();
       ctx.moveTo(this.x, this.y);
       ctx.lineTo(this.xPrev, this.yPrev);
       ctx.stroke();
+
     }
   }
 
@@ -78,8 +90,8 @@
     }
 
     ctx.translate(width / 2, height / 2);
-    ctx.fillStyle = "rgba(0, 0, 0, 0.4)";
-    ctx.strokeStyle = "white";
+
+    
     rafId = requestAnimationFrame(frame);
   }
 

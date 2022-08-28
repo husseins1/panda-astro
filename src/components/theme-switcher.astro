@@ -46,6 +46,19 @@ import { Icon } from "astro-icon";
   button.addEventListener("click", () => {
     const themeNext = getThemeNext();
     document.documentElement.dataset.theme = themeNext;
+    const classes = document.documentElement.classList;
+    
+
+      if(themeNext === "dark"){
+        document.documentElement.classList.remove("light")
+        document.documentElement.classList.add("dark")
+        
+      }else{
+        document.documentElement.classList.add("light")
+        document.documentElement.classList.remove("dark")
+
+      }
+
     localStorage.setItem("theme", themeNext);
     updateIcon();
   });
