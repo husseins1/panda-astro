@@ -7,6 +7,21 @@ import Intro from "~/components/intro.astro";
 import Showcase from "~/components/showcase.astro";
 import Splash from "~/components/splash.astro";
 import "~/styles/index.css";
+import {request,gql} from "graphql-request"
+const apiPoint = import.meta.env.GRAPH_API;
+
+const fetchData = async ()=>{
+
+  const query = gql`
+  query MyQuery {
+  abouts{
+    text
+  }
+}
+  `;
+  return await request(apiPoint,query,{})
+}
+console.log(await fetchData())
 
 const { site } = Astro;
 const image = new URL("social.jpg", site);

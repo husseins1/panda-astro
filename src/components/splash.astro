@@ -3,6 +3,7 @@ import { generateImage } from "astro-eleventy-img";
 import { Icon } from "astro-icon";
 import Starfield from "~/components/starfield.astro";
 import HeroImage from "~/components/hero-image.astro";
+import Logo from "./logo.astro";
 
 const widths = [450, 800];
 const sizes = "(min-width: 640px) 42vw, 67vw";
@@ -19,7 +20,7 @@ const webpSrcset = webp.map(({ srcset }) => srcset).join(",");
 const pngSrcset = png.map(({ srcset }) => srcset).join(",");
 ---
 
-<section class="relative h-full bg-white dark:bg-black ">
+<section class="relative h-full bg-white dark:bg-[#111827] ">
   <Starfield />
   <div id="splash-bg-fallback" class="absolute inset-0 hidden opacity-40">
     <HeroImage />
@@ -28,7 +29,8 @@ const pngSrcset = png.map(({ srcset }) => srcset).join(",");
     <h2
       class="flex flex-col self-end gap-2 sm:gap-4 sm:self-auto sm:justify-self-end"
     >
-      <Icon name="logomark" class="h-24 text-white md:h-32" />
+      <!-- <Icon name="logomark" class="h-24 text-white md:h-32" /> -->
+      <Logo height={"40"} />
       <div
         class="font-extrabold tracking-tighter text-center text-8xl gradient-text"
       >
@@ -39,7 +41,7 @@ const pngSrcset = png.map(({ srcset }) => srcset).join(",");
     </h2>
 
     <div class="self-start w-2/3 max-w-3xl sm:w-10/12 sm:self-auto sm:justify-self-start">
-    <img class="object-cover w-full h-full" src="/assets/images/panda.gif" alt="">
+    <img class="object-cover sm:min-h-[330px] sm:min-w-[330px]  max-h-[487px] max-w-[487px] w-9/12 h-9/12 m-auto" src="/assets/images/panda.gif" alt="">
     </div>
     <!-- <picture
       class="self-start w-2/3 max-w-3xl sm:w-10/12 sm:self-auto sm:justify-self-start"

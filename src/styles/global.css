@@ -6,7 +6,12 @@ a,
   @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-transparent focus:ring-secondary;
 }
 
+.dark .gradient-text {
+  @apply text-transparent bg-clip-text;
+  @apply bg-gradient-to-br from-[#a1c4fd]  to-pink-500;
+}
+
 .gradient-text {
   @apply text-transparent bg-clip-text;
-  @apply bg-gradient-to-br from-indigo-500 via-fuchsia-500 to-pink-500;
+  @apply bg-gradient-to-br from-[#1d55b0] to-pink-500;
 }
