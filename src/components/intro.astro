@@ -1,15 +1,18 @@
 ---
 import { Icon } from "astro-icon";
 import ContentSection from "~/components/content-section.astro";
+
+const {text} = Astro.props;
 ---
 
-<ContentSection title="Just ship less" id="intro">
-  <Icon slot="eyebrow" name="logomark" class="h-32" />
+
+<ContentSection float="float-x" title="About" id="intro">
   <Fragment slot="lead">
-    Astro is a new kind of site builder for the
+    <!-- Astro is a new kind of site builder for the
     <span class="text-primary">modern</span> web.
     <span class="text-primary">Lightning-fast</span>
-    performance meets <span class="text-primary">powerful</span> developer experience.
+    performance meets <span class="text-primary">powerful</span> developer experience. -->
+    {text}
   </Fragment>
   <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
     <a
@@ -28,3 +31,4 @@ import ContentSection from "~/components/content-section.astro";
     </a>
   </div>
 </ContentSection>
+

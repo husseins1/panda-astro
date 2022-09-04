@@ -70,19 +70,6 @@ const pngSrcset = png.map(({ srcset }) => srcset).join(",");
 </noscript> -->
 
 <style>
-  @keyframes float {
-    0% {
-      transform: translate3d(0, 0, 0);
-    }
-
-    100% {
-      transform: translate3d(0, 30px, 0);
-    }
-  }
-
-  picture {
-    animation: float linear 2.5s infinite alternate;
-  }
 
   @media (prefers-reduced-motion: reduce) {
     picture {

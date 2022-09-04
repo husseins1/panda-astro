@@ -5,23 +5,13 @@ import Footer from "~/components/footer.astro";
 import Header from "~/components/header.astro";
 import Intro from "~/components/intro.astro";
 import Showcase from "~/components/showcase.astro";
+import ReviewSection from "~/components/reviewSection.astro";
 import Splash from "~/components/splash.astro";
+import { fetchData } from "~/services";
 import "~/styles/index.css";
-import {request,gql} from "graphql-request"
-const apiPoint = import.meta.env.GRAPH_API;
 
-const fetchData = async ()=>{
-
-  const query = gql`
-  query MyQuery {
-  abouts{
-    text
-  }
-}
-  `;
-  return await request(apiPoint,query,{})
-}
-console.log(await fetchData())
+const data = await fetchData();
+console.log(data)
 
 const { site } = Astro;
 const image = new URL("social.jpg", site);
@@ -103,10 +93,11 @@ const description =
     <Header />
     <Splash />
     <div class="px-8 py-32 space-y-24">
-      <Intro />
-      <Features />
-      <Compatibility />
-      <Showcase />
+      <Intro text={data.abouts[0].text} />
+      <Features services={data.services} />
+      <Compatibility posts={data.posts} />
+      <Showcase projects={data.projects} />
+      <ReviewSection />
     </div>
     <Footer />
   </body>

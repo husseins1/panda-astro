@@ -1,0 +1,28 @@
+---
+import { GetStaticPaths } from "astro";
+import PostDetail from "../../components/postdetail"
+import { fetchPostData } from "~/services";
+
+import Logo from "~/components/logo.astro";
+
+export  async function getStaticPaths(){
+    const data =await fetchPostData();
+    return data.posts.map(post=>{
+        return {
+            params:{slug:post.slug},
+            props:{post}
+
+        }
+    })
+}
+
+const {post} = Astro.props
+
+---
+
+<div class="">
+    
+    <PostDetail post={post} />
+    <div class="text-center"><a class="inline-block" href="/"><Logo height={"20"} /></a></div>
+              
+</div>

@@ -1,8 +1,9 @@
 ---
-const { title, id } = Astro.props;
+const { title, id,float } = Astro.props;
 ---
 
 <section {id} class="flex flex-col items-center gap-4 space-y-8 scroll-mt-24">
+  <img  loading="lazy" class={`${float} h-32 m-auto`} src="/assets/images/Adorable-Panda.png" alt="panda"/>
   <div class="flex flex-col items-center gap-4">
     <slot name="eyebrow" />
     <h2
@@ -16,3 +17,35 @@ const { title, id } = Astro.props;
   </p>
   <slot />
 </section>
+
+<style>
+
+   @keyframes float-y {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+      transform: translate3d(0, 30px, 0);
+    }
+  }
+   @keyframes float-x {
+    0% {
+      transform: translate3d(-30px, 0, 0);
+    }
+
+    100% {
+      transform: translate3d(30px,0, 0);
+    }
+  }
+   
+
+  .float-y {
+    animation: float-y linear 2.5s infinite alternate;
+  }
+  .float-x {
+    animation: float-x linear 2.5s infinite alternate;
+  }
+  
+
+</style>
