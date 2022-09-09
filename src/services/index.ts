@@ -1,14 +1,16 @@
 import {request,gql} from "graphql-request"
 const apiPoint = import.meta.env.GRAPH_API;
 
-export const fetchData = async ()=>{
-
+export const fetchData = async (lang:string)=>{
+const variables = {
+  lang
+};
   const query = gql`
-  query MyQuery {
-  abouts{
+  query MyQuery($lang: Locale!) {
+  abouts(locales:[$lang]){
     text
   }
-  services{
+  services(locales:[$lang]){
     title
     description
     icon{
@@ -37,7 +39,7 @@ export const fetchData = async ()=>{
   }
 }
   `;
-  return await request(apiPoint,query,{})
+  return await request(apiPoint,query,variables)
 }
 export const fetchPostData = async ()=>{
 

@@ -2,24 +2,24 @@
 import Blog from "~/components/blog.astro";
 import Features from "~/components/features.astro";
 import Footer from "~/components/footer.astro";
-import HeaderAr from "~/components/headerAr.astro";
-import IntroAr from "~/components/introAr.astro";
+import Header from "~/components/header.astro";
+import Intro from "~/components/intro.astro";
 import Showcase from "~/components/showcase.astro";
 import ReviewSection from "~/components/reviewSection.astro";
-import SplashAr from "~/components/splashAr.astro";
+import Splash from "~/components/splash.astro";
 import { fetchData } from "~/services";
 import "~/styles/index.css";
 
-const data = await fetchData("ar");
-
+const data = await fetchData("en");
+console.log(data)
 
 const { site } = Astro;
 const image = new URL("social.jpg", site);
 const description =
-  "باندا لتصميم وتطوير اجمل وافضل المواقع والبرامج";
+  "Build fast websites with Panda. Panda is a specilized digital agency";
 ---
 
-<html dir="rtl" lang="ar" class="h-full motion-safe:scroll-smooth" data-theme="dark">
+<html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -30,9 +30,24 @@ const description =
     <meta name="description" content={description} />
 
     <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap"
+      />
+    </noscript>
 
     <!-- social media -->
     <meta property="og:title" content="Astro" />
@@ -75,10 +90,10 @@ const description =
   <body
     class="h-full overflow-x-hidden text-base bg-default text-default selection:bg-secondary selection:text-white"
   >
-    <HeaderAr />
-    <SplashAr />
+    <Header />
+    <Splash />
     <div class="px-8 py-32 space-y-24">
-      <IntroAr text={data.abouts[0].text} />
+      <Intro text={data.abouts[0].text} />
       <Features services={data.services} />
       <Blog posts={data.posts} />
       <Showcase projects={data.projects} />
@@ -87,8 +102,3 @@ const description =
     <Footer />
   </body>
 </html>
-<style>
-  body{
-    font-family: 'IBM Plex Sans Arabic', sans-serif;
-  }
-</style>

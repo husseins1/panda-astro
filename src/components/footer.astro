@@ -6,29 +6,34 @@ const links = [
   {
     url: "https://astro.build/",
     description: "Astro's official website",
-    icon: "mdi:home",
+    icon: "fa-brands:whatsapp",
   },
   {
     url: "https://github.com/withastro/astro",
     description: "Astro on GitHub",
-    icon: "fa-brands:github-alt",
+    icon: "fa-brands:telegram",
   },
   {
     url: "https://astro.build/chat",
     description: "Astro on Discord",
-    icon: "fa-brands:discord",
+    icon: "fa-brands:instagram",
   },
   {
     url: "https://twitter.com/astrodotbuild",
     description: "Astro on Twitter",
-    icon: "fa-brands:twitter",
+    icon: "fa-brands:facebook",
   },
 ];
 ---
 
 <footer class="relative flex items-center justify-center h-64">
   <div class="absolute inset-0 overflow-hidden opacity-40">
-    <HeroImage />
+    <img
+    class="object-cover w-full h-full object-left-top"
+    src="/assets/images/coding.jpg"
+    
+    alt="Coding"
+  />
   </div>
   <ul class="relative grid grid-cols-2 gap-4 sm:grid-cols-4">
     {

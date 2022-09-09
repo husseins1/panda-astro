@@ -4,11 +4,11 @@ import ThemeSwitcher from "~/components/theme-switcher.astro";
 import Logo from "./logo.astro";
 
 const navItems = [
-  { title: "Services", url: "#features" },
-  { title: "Blog", url: "#blog" },
-  { title: "Showcase", url: "#showcase" },
-  { title: "Reviews", url: "#reviews" },
-  { title: "Ar", url: "/" },
+  { title: "الخدمات", url: "#features" },
+  { title: "المدونة", url: "#blog" },
+  { title: "العرض", url: "#showcase" },
+  { title: "مراجعات", url: "#reviews" },
+  { title: "En", url: "/en" },
 ];
 
 
@@ -19,9 +19,9 @@ const navItems = [
   class="absolute bottom-0 z-10   flex items-center justify-between w-full px-8 py-4 text-white border-b border-transparent text-default"
 >
   <a class="flex items-center gap-3 hover:!text-default" href="#">
-    <h1 class="sr-only">Astro</h1>
+    <h1 class="sr-only">باندا</h1>
     <Logo />
-    <h1>PANDA</h1>
+    <h1>باندا</h1>
     <!-- <Icon name="logomark" class="h-10" />
     <Icon name="wordmark" class="hidden h-4 sm:block" /> -->
   </a>
@@ -119,14 +119,7 @@ const navItems = [
   });
 </script>
 
-<!-- https://github.com/withastro/compiler/issues/395 -->
-<!-- <noscript>
-  <style>
-    #open-nav-button {
-      @apply hidden;
-    }
-  </style>
-</noscript> -->
+
 
 <style>
   .fixed-header {

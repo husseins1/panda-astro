@@ -1,0 +1,72 @@
+---
+const {reviews} = Astro.props;
+---
+
+<div class="relative flex w-full min-h-[50vh] ">
+    <div  class="card absolute  text-center flex items-center justify-center">
+       {reviews.map(({name,title,content,image})=>(<li class="flex flex-col items-center gap-4 p-6 border border-default bg-offset max-w-xl">
+          <img class="rounded-full h-20 w-20 object-cover " src={image.url} alt="">
+          <p class="text-lg font-extrabold text-center ">{name}</p>
+          <p class="text-sm  text-center text-offset">{title}</p>
+          <p class="text-sm text-center text-offset dark:text-white">&quot; {content} &quot;</p>
+
+        </li>))}
+    </div>
+    
+<div class="absolute flex space-x-4 controls left-1/2 -translate-x-1/2">
+
+    <span data-surf="prev" class="surf p-4 cursor-pointer rounded-full border hover:text-primary hover:border-primary"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
+        
+    </svg>
+</span>
+<span data-surf="next" class="surf p-4 cursor-pointer rounded-full border hover:text-primary hover:border-primary"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+</svg>
+</span>
+</div>
+
+
+</div>
+<style>
+    .card{
+        top:50%;
+        transform:translateY(-50%);
+        transition: all 1s linear;
+        width:100%;
+        padding:1rem;
+    }
+</style>
+
+<script is:inline>
+    const cards = document.querySelectorAll(".card");
+    const surfs = document.querySelectorAll(".surf");
+    const controlContainer = document.querySelector('.controls');
+    let pointer = 0;
+    if(cards.length < 2){
+        controlContainer.style.display = 'none';
+    }
+    cards.forEach((card,index)=>{
+        card.style.left=`${index*120}%`; 
+    })
+    surfs.forEach(ele=>ele.addEventListener("click",e=>{
+        if(ele.dataset.surf=== "next"){
+            pointer++;
+            if(pointer === cards.length){
+                pointer=0;
+            }
+            
+        }
+        if(ele.dataset.surf=== "prev"){
+            pointer--;
+            if(pointer < 0){
+                pointer = cards.length - 1;
+            }
+        }
+        cards.forEach((ele,index)=>ele.style.left=`${(index-pointer)*120}%`)
+        controlContainer.style.top = `calc(50% + ${cards[pointer].clientHeight/2}px)`
+    }))
+    controlContainer.style.top = `calc(50% + ${cards[0].clientHeight/2}px)`
+    
+
+</script>

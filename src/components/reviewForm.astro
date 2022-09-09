@@ -1,0 +1,68 @@
+<form id="form" class="pt-20 text-center space-y-6 " >
+
+
+    
+    <h1 class="font-extrabold text-lg">Leave us a comment</h1>
+
+    <div class="grid ">
+        <label>Name</label>
+        <input  class="outline-none p-2  bg-offset rounded-sm" type="text">
+        <label>Title</label>
+        <input  class="outline-none p-2 bg-offset rounded-sm" type="text">
+        <label>Message</label>
+        <textarea  class="outline-none p-2 bg-offset rounded-sm" />
+        <label>Your Picture</label>
+        <input  id="file" type="file" class="outline-none p-2 bg-offset rounded-sm" />
+        
+
+    </div>
+
+    <button type="submit" class=" bg-offset  px-4 py-2   rounded-lg font-extrabold " >Send</button>
+    <img id="jaja" src="" alt="">
+
+</form>
+
+<style>
+    .grid{
+        grid-template-columns: min-content 1fr;
+        gap:1rem;
+        row-gap: 1.5rem;
+        align-items:center;
+    }
+    @media only screen and (max-width: 450px){
+    .grid{
+        grid-template-columns: 1fr;
+    }
+}  
+</style>
+<script  is:inline>
+    // import '../scripts/form';
+    const form = document.getElementById('form');
+    const jaja = document.getElementById('jaja');
+    
+    const fileField = document.getElementById('file');
+    const newForm = new FormData();
+    
+    form.addEventListener('submit',async(e)=>{
+        e.preventDefault();
+        const reader = new FileReader();
+        console.log(createImageBitmap(fileField.files[0]))
+    
+        newForm.append('fileUpload', fs.createReadStream('path/to/file.png'))
+        const url = URL.createObjectURL(fileField.files[0]);
+        jaja.src=url;
+       
+        const result = await fetch("https://api-eu-central-1.hygraph.com/v2/cl7eru5h75x3t01uf47fmezuh/master/upload",{
+            method:'POST',
+            headers:{
+                Authorization: "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImdjbXMtbWFpbi1wcm9kdWN0aW9uIn0.eyJ2ZXJzaW9uIjozLCJpYXQiOjE2NjI1NTkwNDgsImF1ZCI6WyJodHRwczovL2FwaS1ldS1jZW50cmFsLTEuaHlncmFwaC5jb20vdjIvY2w3ZXJ1NWg3NXgzdDAxdWY0N2ZtZXp1aC9tYXN0ZXIiLCJtYW5hZ2VtZW50LW5leHQuZ3JhcGhjbXMuY29tIl0sImlzcyI6Imh0dHBzOi8vbWFuYWdlbWVudC5ncmFwaGNtcy5jb20vIiwic3ViIjoiNGZjOWU2ZmEtMWJlOC00MzlkLTkwNWMtYTUyZDYzNjFmMWRjIiwianRpIjoiY2w3cm9xYnM1NmpiMDAxdDdlanZ4ZDdpayJ9.JmtGUS-TNlECDPaOtWWC5gjbaum0Aghh0hhhcppmBi0mgLWGixeAl4Hgkl7xAX_4BDZn8-wrAjTl19gsqjX5IWRcNSLF9njK-SPqyGD9qt-TSI56TlskNBqCcuiJxUaQACnpQtq5sG_ozswCkNc7oOEQ2hQUtCwoAhn3oEYxb77oPuJzv6GMuDHcchYhHY7zwZS1fOZlv07WXBqnGvmRPC4c2MUngh9IimUe-_cnULYSS_hqyAZTDm7ZawAqjhZVzbTpLnKdqSBYzIeWXnkPhu6uBPnP0UuUKiv1c9HLTpTyevLQrRbda-Z8dmmY1Z3xXrIEp-yrqj8U49Qnoy4UUjDmhoL3zVZKxb1PeAS1Eu0A1pLbBRDeNKW4_tIgxV3Uf4vOXwXlXNGHOzjXkhLz47-Z8bqR5rVuzkUwB9vVrRV5q02FftaSmQBs9IG_JIF6Kc4vS60LvCW2P9tHapikyewGKk2Lk5bxMxHmFoJbzK5y38pOZFGRZ4eT40n8GQIr3vK6HLcjcBy6BiDfiJgbmCF4UgYjvu7bBNL3VkBXWHQT4uaRctnlBULj7S7VdR3wPPo2klBAosOo1xEPBWGduR37-EhUVdAzPMyQ7RwmosVNUHct0pHF84cebDiIka-zid9BxXx66WWRCBkgTqrlv8QOJyiTB9w2eoZ_EltEHTo"
+            },
+            body:newForm
+        })
+        
+            
+        })
+    
+    
+   
+</script>

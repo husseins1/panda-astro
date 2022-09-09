@@ -1,14 +1,18 @@
 ---
 import ContentSection from "./content-section.astro";
-
+import Carousel from "./carousel.astro"
+import ReviewForm from "./reviewForm.astro";
+const {reviews} = Astro.props;
 
 ---
-<ContentSection title="Reviews" id="reviews">
-    
+<ContentSection float="float-x" title="Reviews" id="reviews">
+
  <Fragment slot="lead">
     Astro is <span class="text-primary">versatile</span>.{" "}
     <span class="text-primary">Explore</span> what's possible and get{" "}
     <span class="text-primary">inspired</span>.
   </Fragment>
+  <Carousel reviews={reviews} />
+
   
 </ContentSection>
